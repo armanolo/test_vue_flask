@@ -1,6 +1,6 @@
-# camera
+# vue test 
 
-> camera test
+> vue test
 
 ## Build Setup
 
