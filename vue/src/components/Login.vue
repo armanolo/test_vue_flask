@@ -73,6 +73,7 @@ export default
 					case 200:{
 						isLogged = response.data['isLogged']
 						name = response.data['name']
+						message = `Hi ${name}, you are logged`;
 						break;
 					}
 					case 203:{
@@ -84,16 +85,19 @@ export default
 					case 401:{
 						message = `USER ${this.email} Missing arguments`;break;
 					}
+					default:{
+						message = 'Estatus unknown';
+					}
 				}
 			}).catch((error) => {
-				console.log(error);
+				alert(`${error.message}: maybe server Flask server is down`);	
 			}).then( () => {
 				if(isLogged){
 					this.addAuth(isLogged);
-					alert(`Hi ${name}, you are logged`);
+					alert(message);
 					//this.$router.push({ name: 'next_web_site', params: { name } })
 				}else{
-					alert(`Who are you?`);
+					alert(message);
 				}
 			});
 			
